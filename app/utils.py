@@ -7,33 +7,33 @@ from app.models import Book
 class LibraryManager:
     """
     Менеджер библиотеки книг, позволяет производить загрузку из и сохранение в
-    JSON файл. Используя его как БД.
+    JSON файл. Используя его как базу данных.
 
     Атрибуты::
         library_file (str): Путь к JSON файлу.
         books (list): Список книг в библиотеке.
     """
-    def __init__(self, library_file='books.json'):
+    def __init__(self, library_file="books.json"):
         self.library_file = library_file
         self.books = self.load_books()
 
     def load_books(self):
         """Загрузка книг из JSON файла."""
         if os.path.exists(self.library_file):
-            with open(self.library_file, 'r', encoding='utf-8') as file:
+            with open(self.library_file, "r", encoding="utf-8") as file:
                 return [
                     Book(
-                        title=book['title'],
-                        author=book['author'],
-                        year=book['year'],
-                        status=book['status']
+                        title=book["title"],
+                        author=book["author"],
+                        year=book["year"],
+                        status=book["status"]
                     ) for book in json.load(file)
                 ]
         return []
 
     def save_books(self):
         """Сохранение книг в JSON файле."""
-        with open(self.library_file, 'w', encoding='utf-8') as file:
+        with open(self.library_file, "w", encoding="utf-8") as file:
             json.dump(
                 [book.__dict__ for book in self.books],
                 file,
@@ -47,7 +47,7 @@ class LibraryManager:
         self.books.append(new_book)
         self.save_books()
 
-        print(f'Книга добавлена:\nНазвание: {title},\nАвтор: {author}.\n')
+        print(f"Книга добавлена:\nНазвание: {title},\nАвтор: {author}.\n")
 
     def delete_book(self, book_id):
         """Удаление книги из библиотеки по идентификатору."""
@@ -57,9 +57,9 @@ class LibraryManager:
         if book_to_delete:
             self.books.remove(book_to_delete)
             self.save_books()
-            print(f'Book with Id {book_id} deleted\n')
+            print(f"Книга с Id {book_id} удалена.\n")
         else:
-            print(f'Book with Id {book_id} not found\n')
+            print(f"Книга с Id {book_id} не найдена.\n")
 
     def find_books(self, **kwargs):
         """

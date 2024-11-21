@@ -55,7 +55,7 @@ def main():
 
                 if books:
                     for book in books:
-                        print(book)
+                        print(f"\n{book}")
                 else:
                     print("Библиотека пуста.\n")
 
