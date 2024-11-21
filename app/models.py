@@ -1,0 +1,37 @@
+class Book:
+    """
+    Класс для работы с книгами.
+    Создержит атрибуты:
+        id (int): Уникальный идентификатор.
+        title (str): Название книги.
+        author (str): Автор книги.
+        year (int): Год издания.
+        status (bool): Статус книги: “в наличии”, “выдана”).
+    """
+    _id_counter = 0
+    status_book: dict = {True: 'в наличии', False: 'выдана'}
+
+    def __init__(self, title, author, year, status=True):
+        Book._id_counter += 1
+        self.id = Book._id_counter
+        self.title = title
+        self.author = author
+        self.year = year
+        self.status = status
+
+    def __repr__(self):
+        return (
+            f"Book(id={self.id}, "
+            f"title={self.title}, "
+            f"author={self.author}, "
+            f"year={self.year}, "
+            f"status={self.status})"
+        )
+
+    def __str__(self):
+        return (
+            f"title: {self.title}, "
+            f"author: {self.author}, "
+            f"year: {self.year}, "
+            f"status: {Book.status_book[self.status]}"
+        )
