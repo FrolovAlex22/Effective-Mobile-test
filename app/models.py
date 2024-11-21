@@ -1,6 +1,7 @@
 class Book:
     """
     Класс для работы с книгами.
+
     Создержит атрибуты:
         id (int): Уникальный идентификатор.
         title (str): Название книги.
@@ -9,7 +10,7 @@ class Book:
         status (bool): Статус книги: “в наличии”, “выдана”).
     """
     _id_counter = 0
-    status_book: dict = {True: 'в наличии', False: 'выдана'}
+    status_book: dict = {True: "в наличии", False: "выдана"}
 
     def __init__(self, title, author, year, status=True):
         Book._id_counter += 1
@@ -30,8 +31,8 @@ class Book:
 
     def __str__(self):
         return (
-            f"title: {self.title}, "
-            f"author: {self.author}, "
-            f"year: {self.year}, "
-            f"status: {Book.status_book[self.status]}"
+            f"title: {self.title},\n"
+            f"author: {self.author},\n"
+            f"year: {self.year},\n"
+            f"status: {Book.status_book[self.status]}\n"
         )
