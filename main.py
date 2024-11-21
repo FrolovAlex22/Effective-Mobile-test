@@ -34,7 +34,7 @@ def main():
             elif command == 3:
                 field = input(
                     "Пропишите текстом атрибут для поиска, нужно выбратьиз "
-                    "списка(id/title/author/year): "
+                    "списка(title/author/year): "
                 )
                 value = input(
                     f"Введите значение для поиска по атрибуту: {field}:"
